@@ -1,0 +1,41 @@
+<table class="table" *ngIf="fetchedStudents; else loadingBlock">
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Course</th>
+    <th scope="col">Birth Date</th>
+    <th scope="col">Gender</th>
+    <th scope="col">Age</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let student of students">
+    <th> {{student.name ?? "none" }}</th>
+    <td>{{student.email ?? "none" }}</td>
+    <td>{{student.course ?? "none" }}</td>
+    <td>{{student.birthDate ?? "none" }}</td>
+    <td>{{student.gender ?? "none" }}</td>
+    <td>{{student.age ?? "none" }}</td>
+    <td>
+      <div>
+        <button class="btn btn-sm btn-primary me-1" (click)="openEditingPrompt(student.id)"><i class="bi bi-pencil-square"></i></button>
+        <button class="btn btn-sm btn-danger" (click)="openDeletionPrompt(student.id)"><i class="bi bi-trash2"></i></button>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<ng-template #loadingBlock>
+  <div class="position-absolute top-50 start-50 translate-middle">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-template>
+
+<app-student-editing *ngIf="confirmingEditing" (editedStudent)="editedStudent($event)" [editingId]="idForAction!"></app-student-editing>
+<app-confirmation *ngIf="confirmingDeletion" (answer)="deleteStudent($event)"></app-confirmation>

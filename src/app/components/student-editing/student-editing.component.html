@@ -1,0 +1,49 @@
+<div class="p-4 border rounded position-absolute top-50 start-50 translate-middle z-2 shadow bg-light" (click)="$event.stopPropagation()">
+  <div>
+    <p>Edit Student</p>
+    <div>
+
+      <p *ngIf="errorMessage" class="text-danger text-center mt-4">{{errorMessage}} <i class="bi bi-patch-exclamation"></i></p>
+      <div class="p-2">
+
+        <div class="row mb-3">
+
+          <div class="form-group col">
+            <label for="name">Name</label>
+            <input [disabled]="fetchingInfo" type="text" class="form-control" id="name" name="name" [(ngModel)]="studentToEdit.name" (ngModelChange)="changedSomething = true" required>
+          </div>
+
+          <div class="form-group col">
+            <label for="email">Email</label>
+            <input [disabled]="fetchingInfo" type="email" class="form-control" id="email" name="email" [(ngModel)]="studentToEdit.email" (ngModelChange)="changedSomething = true" required>
+          </div>
+
+          <div class="form-group col">
+            <label for="course">Course</label>
+            <input [disabled]="fetchingInfo" type="text" class="form-control" id="course" name="course" [(ngModel)]="studentToEdit.course" (ngModelChange)="changedSomething = true" required>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="form-group col">
+            <label for="birthDate">Birth Date</label>
+            <input [disabled]="fetchingInfo" type="date" class="form-control" id="birthDate" name="birthDate" [max]="TODAY" [(ngModel)]="studentToEdit.birthDate" (ngModelChange)="changedSomething = true" required>
+          </div>
+
+          <div class="form-group col">
+            <label for="genderradio">Gender</label>
+            <select class="form-select" id="genderradio" name="gender" required [(ngModel)]="studentToEdit.gender" (ngModelChange)="changedSomething = true">
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button class="btn btn-success mx-1" (click)="confirm()"><i class="bi bi-check"></i>Confirm</button>
+    <button class="btn btn-danger mx-1" (click)="cancel()"><i class="bi bi-x"></i>Cancel</button>
+  </div>
+</div>
+
+<div class="position-absolute top-0 start-0 z-1 w-100 h-100" style="backdrop-filter: blur(3px);" (click)="cancel()"></div>

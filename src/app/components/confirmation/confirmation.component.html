@@ -1,0 +1,9 @@
+<div class="p-4 border rounded position-absolute top-50 start-50 translate-middle z-2 shadow bg-light" (click)="$event.stopPropagation()">
+  <div>
+    <p>Are you sure?</p>
+    <button class="btn btn-success mx-1" (click)="confirm()"><i class="bi bi-check"></i>Yes</button>
+    <button class="btn btn-danger mx-1" (click)="decline()"><i class="bi bi-x"></i>No</button>
+  </div>
+</div>
+
+<div class="position-absolute top-0 start-0 z-1 w-100 h-100" style="backdrop-filter: blur(3px);" (click)="decline()"></div>
