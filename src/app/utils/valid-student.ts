@@ -1,5 +1,7 @@
 import Student from "../types/student";
 
+const MAX_CHAR_SIZE = 255
+
 export default function validStudent(student: Student): boolean {
   return Boolean(validString(student.name)
     && validString(student.email)
@@ -17,5 +19,5 @@ function validGender(gender?: string): boolean {
 }
 
 function validString(s: string | null | undefined): boolean {
-  return Boolean(s && s.length > 0)
+  return Boolean(s && s.length > 0 && s.length < MAX_CHAR_SIZE)
 }

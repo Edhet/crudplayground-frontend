@@ -13,9 +13,9 @@
 
   <tbody>
   <tr *ngFor="let student of students">
-    <th> {{student.name ?? "none" }}</th>
-    <td>{{student.email ?? "none" }}</td>
-    <td>{{student.course ?? "none" }}</td>
+    <th class="text-break">{{student.name ?? "none" }}</th>
+    <td class="text-break">{{student.email ?? "none" }}</td>
+    <td class="text-break">{{student.course ?? "none" }}</td>
     <td>{{student.birthDate ?? "none" }}</td>
     <td>{{student.gender ?? "none" }}</td>
     <td>{{student.age ?? "none" }}</td>
