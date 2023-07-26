@@ -1,3 +1,5 @@
+![Frotend Gif](./.github/crudplayground.gif)
+
 # Frontend
 
 The front-end is a Angular application that runs on the port 4200.
